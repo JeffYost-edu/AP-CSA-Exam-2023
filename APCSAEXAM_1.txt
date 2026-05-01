@@ -1,0 +1,40 @@
+//PART A
+public int findFreeBlock(int period, int duration){
+    int firstMin = -1;
+    int minFree = 0;
+    for(int min = 0; min<60; min++)
+    {
+        if(isMinuteFree(period,min))
+        {
+            if(minFree == 0)
+            {
+                firstMin = min;
+            }
+            minFree++;
+            if(minFree == duration)
+            {
+                return firstMin;
+            }
+        }
+        else
+        {
+            count = 0;
+            first = -1;
+        }
+    }
+    return -1;
+}
+
+//PART B
+public boolean makeAppointment(int startPeriod,int endPeriod, int duration){
+    for(period = startPeriod; period <= endPeriod; period++)
+    {
+        int startMinute = findFreeBlock(period,duration);
+        if(startMinute != -1)
+        {
+            reserveBlock(period,startMinute,duration);
+            return true;
+        }
+    }
+    return false;
+}

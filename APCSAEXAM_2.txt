@@ -1,0 +1,44 @@
+public class Sign
+{
+    String message;
+    int width;
+    
+    public Sign(String message, int width)
+    {
+        this.message = message;
+        this.width = width;
+    }
+    
+    public int numberOfLines()
+    {
+        int numLines = message.length/width;
+        if(message.length%width != 0)
+        {
+            numLines++;
+        }
+        
+        return numLines;
+    }
+    
+    public String getLines()
+    {
+        if(message.length == 0)
+        {
+            return null;
+        }
+        
+        String lines = "";
+        String endOfMsg = message;
+        
+        while(endOfMsg.length > width)
+        {
+            lines += endOfMsg.substring(0,width);
+            lines += ";";
+            endOfMsg = endOfMsg.substring(width);
+        }
+        
+        lines += endOfMsg;
+        
+        return lines;
+    }
+}
